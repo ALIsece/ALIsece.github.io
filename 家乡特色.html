@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客 | 个人兴趣与家乡</title>
+    <!-- Bootstrap 3 CSS -->
+    <link href="bootstrap3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 自定义CSS样式 */
+        body.ocean-theme {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            padding-bottom: 150px; /* 为页脚留出空间 */
+        }
+
+        .bg-ocean {
+            background-color: #1976D2 !important;
+        }
+
+        .ocean-header {
+            background: linear-gradient(135deg, #1976D2, #0D47A1);
+            color: white;
+        }
+
+        /* 修改后的页脚样式 */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 120px; /* 根据内容调整高度 */
+        }
+
+        footer a {
+            color: #ccc;
+        }
+
+        footer a:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* 防止下拉菜单项点击时背景色改变 */
+        .dropdown-menu > li > a:focus,
+        .dropdown-menu > li > a:active {
+            background-color: transparent !important;
+            color: white !important;
+        }
+
+        /* 下拉菜单项悬停效果 */
+        .dropdown-menu > li > a:hover {
+            background-color: #0D47A1 !important;
+            color: white !important;
+        }
+
+        /* 防止主菜单项点击时背景色改变 */
+        .navbar-default .navbar-nav > .open > a,
+        .navbar-default .navbar-nav > .open > a:hover,
+        .navbar-default .navbar-nav > .open > a:focus {
+            background-color: transparent !important;
+            color: white !important;
+        }
+
+        @media (max-width: 768px) {
+            .ocean-card-img {
+                height: 150px;
+            }
+            body.ocean-theme {
+                padding-bottom: 200px; /* 在小屏幕上为页脚留更多空间 */
+            }
+            footer {
+                height: auto; /* 在小屏幕上自动调整高度 */
+                position: relative; /* 在小屏幕上取消固定定位 */
+            }
+        }
+        .navbar-default .navbar-nav > li > a {
+            font-weight: 600;
+            font-size: 15px;
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            padding: 15px 20px;
+        }
+
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #fff;
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        /* 下拉菜单文字也突出 */
+        .dropdown-menu > li > a {
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* 导航品牌文字 */
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 18px;
+            color: #fff;
+        }
+        .panel-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 水平居中 */
+            text-align: center; /* 文字也居中 */
+        }
+
+        .specialty-card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            background-color: white;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .specialty-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .specialty-badge {
+            background-color: #1976D2;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .section-title {
+            color: #1976D2;
+            border-bottom: 2px solid #1976D2;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .culture-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .culture-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .food-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .food-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 200px;
+        }
+
+        .food-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .food-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .food-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .culture-item {
+                flex-direction: column;
+            }
+
+            .culture-img {
+                width: 100%;
+                height: auto;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        .navbar-brand[href="#"] {
+            color: saddlebrown !important;
+        }
+    </style>
+</head>
+<body class="ocean-theme">
+<nav class="navbar navbar-default navbar-fixed-top bg-ocean">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">袁伟杰-个人博客</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav">
+                <li><a href="首页.html">首页</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        我的兴趣 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="足球.html">足球</a></li>
+                        <li><a href="旅游.html">旅行</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        家乡风光 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="广州番禺.html">广州番禺</a></li>
+                        <li><a href="家乡特色.html">家乡美食</a></li>
+                    </ul>
+                </li>
+                <li><a href="个人介绍.html">关于我</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="搜索...">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!-- 页眉 -->
+<header class="ocean-header py-5 text-center" style="margin-top: 50px;">
+    <div class="container">
+        <h1 class="text-uppercase">探索我的世界</h1>
+        <p class="lead">分享兴趣爱好 · 展示家乡美景</p>
+    </div>
+</header>
+
+<div class="container">
+    <!-- 番禺美食介绍 -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="section-title">番禺美食地图</h2>
+        </div>
+
+        <div class="col-md-4">
+            <div class="specialty-card">
+                <img src="图片/13.jpg" class="specialty-img" alt="沙湾姜撞奶">
+                <div class="panel-body">
+                    <h3>沙湾姜撞奶</h3>
+                    <p>番禺沙湾镇传统甜品，已有百年历史。选用本地小黄姜和新鲜水牛奶制作，口感滑嫩，甜中带辣，暖胃又养生。</p>
+                    <div>
+                        <span class="specialty-badge">甜品</span>
+                        <span class="specialty-badge">非遗</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="specialty-card">
+                <img src="图片/14.jpg" class="specialty-img" alt="番禺猪杂粥">
+                <div class="panel-body">
+                    <h3>番禺猪杂粥</h3>
+                    <p>选用新鲜猪杂，配以香米熬制数小时。粥底绵滑，猪杂爽脆，是番禺人最爱的早餐之一，尤其适合冬日暖身。</p>
+                    <div>
+                        <span class="specialty-badge">早餐</span>
+                        <span class="specialty-badge">传统</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="specialty-card">
+                <img src="图片/15.jpg" class="specialty-img" alt="石楼禾虫">
+                <div class="panel-body">
+                    <h3>石楼禾虫</h3>
+                    <p>番禺石楼镇特产，禾虫生长在咸淡水交界的稻田中，富含蛋白质，可煎蛋、蒸蛋或煲粥，味道鲜美独特。而禾虫蒸蛋、酥炸禾虫、禾虫汤等等也都滋味十足。</p>
+                    <div>
+                        <span class="specialty-badge">特产</span>
+                        <span class="specialty-badge">时令</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 美食图库 -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="section-title">番禺美食图鉴</h2>
+            <div class="food-gallery">
+                <div class="food-item">
+                    <img src="图片/17.jpg" alt="番禺点心">
+                    <div class="food-caption">番禺早茶点心</div>
+                </div>
+                <div class="food-item">
+                    <img src="图片/18.jpg" alt="清蒸鱼">
+                    <div class="food-caption">珠江清蒸鱼</div>
+                </div>
+                <div class="food-item">
+                    <img src="图片/19.jpg" alt="嫁女饼">
+                    <div class="food-caption">番禺嫁女饼</div>
+                </div>
+                <div class="food-item">
+                    <img src="图片/20.jpg" alt="老火汤">
+                    <div class="food-caption">岭南老火汤</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 番禺文化特色 -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="section-title">番禺文化瑰宝</h2>
+
+            <div class="culture-item">
+                <img src="图片/21.jpg" class="culture-img" alt="沙湾飘色">
+                <div>
+                    <h3>沙湾飘色</h3>
+                    <p>番禺沙湾镇传统民间艺术，已有300多年历史。表演时由儿童扮成各种故事人物，站在精心制作的"色柜"上巡游，色彩艳丽，造型生动，是岭南民间艺术的瑰宝。</p>
+                    <span class="specialty-badge">非物质文化遗产</span>
+                </div>
+            </div>
+
+            <div class="culture-item">
+                <img src="图片/22.jpg" class="culture-img" alt="岭南园林">
+                <div>
+                    <h3>岭南园林艺术</h3>
+                    <p>番禺保存有众多岭南特色园林，如余荫山房、宝墨园等。这些园林融合了岭南建筑特色与江南园林艺术，小巧精致，布局巧妙，展现了岭南人高超的建筑智慧。</p>
+                    <span class="specialty-badge">建筑艺术</span>
+                </div>
+            </div>
+
+            <div class="culture-item">
+                <img src="图片/23.jpg" class="culture-img" alt="粤剧">
+                <div>
+                    <h3>粤剧文化</h3>
+                    <p>作为粤剧发源地之一，番禺有着深厚的粤剧文化底蕴。每逢节庆，民间粤剧表演络绎不绝。番禺还出过多位粤剧名家，是了解岭南戏曲文化的重要窗口。</p>
+                    <span class="specialty-badge">传统戏曲</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 番禺现代特色 -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading bg-ocean" style="color: white;">
+                    <h3 class="panel-title">番禺的现代魅力</h3>
+                </div>
+                <div class="panel-body">
+                    <p>番禺不仅保留着丰富的传统文化，同时也是一座充满现代活力的城区。广州南站作为亚洲最大的高铁站之一，连接着番禺与全国各地；长隆旅游度假区每年吸引数百万游客，成为广州旅游的名片；万博商务区高楼林立，是广州南部的商业中心。</p>
+                    <p>我最喜欢番禺的一点是它完美融合了传统与现代。你可以在上午参观百年古村，下午逛大型购物中心；白天品味传统美食，晚上欣赏现代演出。这种多元共生的城市气质，正是番禺最独特的魅力所在。</p>
+                    <p>作为一个番禺人，我深感自豪。这里既有深厚的历史底蕴，又有开放包容的城市精神；既有慢生活的闲适，又有快节奏的活力。无论离开多久，那熟悉的乡音、那独特的味道，总能唤起我最温暖的记忆。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 修改后的页脚 -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>个人博客</h5>
+                <p>记录生活 · 分享美好</p>
+            </div>
+            <div class="col-md-3">
+                <h5>快速链接</h5>
+                <ul class="list-unstyled">
+                    <li><a href="首页.html">首页</a></li>
+                    <li><a href="足球.html">兴趣</a></li>
+                    <li><a href="广州番禺.html">家乡</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>联系方式</h5>
+                <ul class="list-unstyled">
+                    <li>邮箱: 3237093347@qq.com</li>
+                    <li>城市: 广州市</li>
+                </ul>
+            </div>
+        </div>
+        <hr style="border-color: #444;">
+        <div class="text-center">
+            <p class="mb-0">&copy; 2023 蓝色梦想家. 保留所有权利.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery和Bootstrap JS -->
+<script src="bootstrap3.0/jquery-3.6.0.min.js"></script>
+<script src="bootstrap3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

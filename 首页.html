@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客 | 个人兴趣与家乡</title>
+    <!-- Bootstrap 3 CSS -->
+    <link href="bootstrap3.0/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* 自定义CSS样式 */
+    body.ocean-theme {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        padding-bottom: 150px; /* 为页脚留出空间 */
+    }
+    
+    .bg-ocean {
+        background-color: #1976D2 !important;
+    }
+    
+    .ocean-header {
+        background: linear-gradient(135deg, #1976D2, #0D47A1);
+        color: white;
+    }
+    
+    .btn-ocean {
+        background-color: #1976D2;
+        color: white;
+    }
+    
+    .btn-ocean:hover {
+        background-color: #0D47A1;
+        color: white;
+    }
+    
+    .btn-outline-ocean {
+        border-color: #1976D2;
+        color: #1976D2;
+    }
+    
+    .btn-outline-ocean:hover {
+        background-color: #1976D2;
+        color: white;
+    }
+
+    
+    .ocean-card-img {
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    /* 修改后的页脚样式 */
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 20px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 120px; /* 根据内容调整高度 */
+    }
+    
+    footer a {
+        color: #ccc;
+    }
+    
+    footer a:hover {
+        color: white;
+        text-decoration: none;
+    }
+    
+    /* 防止下拉菜单项点击时背景色改变 */
+    .dropdown-menu > li > a:focus,
+    .dropdown-menu > li > a:active {
+        background-color: transparent !important;
+        color: white !important;
+    }
+    
+    /* 下拉菜单项悬停效果 */
+    .dropdown-menu > li > a:hover {
+        background-color: #0D47A1 !important;
+        color: white !important;
+    }
+    
+    /* 防止主菜单项点击时背景色改变 */
+    .navbar-default .navbar-nav > .open > a, 
+    .navbar-default .navbar-nav > .open > a:hover, 
+    .navbar-default .navbar-nav > .open > a:focus {
+        background-color: transparent !important;
+        color: white !important;
+    }
+    
+    @media (max-width: 768px) {
+        .ocean-card-img {
+            height: 150px;
+        }
+        body.ocean-theme {
+            padding-bottom: 200px; /* 在小屏幕上为页脚留更多空间 */
+        }
+        footer {
+            height: auto; /* 在小屏幕上自动调整高度 */
+            position: relative; /* 在小屏幕上取消固定定位 */
+        }
+    }
+	.navbar-default .navbar-nav > li > a {
+	    font-weight: 600;
+	    font-size: 15px;
+	    color: #fff;
+	    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+	    letter-spacing: 0.5px;
+	    transition: all 0.3s ease;
+	    padding: 15px 20px;
+	}
+	
+	.navbar-default .navbar-nav > li > a:hover,
+	.navbar-default .navbar-nav > li > a:focus {
+	    color: #fff;
+	    background-color: rgba(255,255,255,0.15);
+	}
+	
+	/* 下拉菜单文字也突出 */
+	.dropdown-menu > li > a {
+	    font-weight: 500;
+	    color: #333;
+	}
+	
+	/* 导航品牌文字 */
+	.navbar-brand {
+	    font-weight: 700;
+	    font-size: 18px;
+	    color: #fff;
+	}
+    .panel-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 水平居中 */
+        text-align: center; /* 文字也居中 */
+    }
+
+    .ocean-card-img {
+        margin: 0 auto; /* 水平居中 */
+        display: block; /* 必须设置为block才能使用margin auto */
+    }
+    .navbar-brand[href="#"] {
+        color: saddlebrown !important;
+    }
+</style>
+</head>
+<body class="ocean-theme">
+  <nav class="navbar navbar-default navbar-fixed-top bg-ocean">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">袁伟杰-个人博客</a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="nav navbar-nav">
+                  <li><a href="#">首页</a></li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          我的兴趣 <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a href="足球.html">足球</a></li>
+                          <li><a href="旅游.html">旅行</a></li>
+                      </ul>
+                  </li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          家乡风光 <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a href="广州番禺.html">广州番禺</a></li>
+                          <li><a href="家乡特色.html">家乡美食</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="#3">关于我</a></li>
+              </ul>
+              <form class="navbar-form navbar-right">
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="搜索...">
+                  </div>
+                  <button type="submit" class="btn btn-default">搜索</button>
+              </form>
+          </div>
+      </div>
+  </nav>
+
+    <!-- 页眉 -->
+    <header class="ocean-header py-5 text-center" style="margin-top: 50px;">
+        <div class="container">
+            <h1 class="text-uppercase">探索我的世界</h1>
+            <p class="lead">分享兴趣爱好 · 展示家乡美景</p>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- 兴趣部分 -->
+            <section class="col-md-6 mb-5">
+                <h2 class="mb-4 pb-2 text-center" style="border-bottom: 1px solid #64B5F6;" id="1">我的兴趣爱好</h2>
+                
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="图片/4.jpg"  class="img-responsive ocean-card-img" alt="">
+                        <h3>足球</h3>
+                        <p>从小学开始接触足球，特别喜欢拍摄自然风光和城市街景。我的摄影风格偏向于捕捉瞬间的真实情感。</p>
+                        <a href="足球.html" class="btn btn-ocean">了解更多</a>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="图片/5.jpg"  class="img-responsive ocean-card-img" alt="">
+                        <h3>旅行</h3>
+                        <p>每次放寒暑假，我都会进行旅行，来缓解一个学期的学习压力并了解祖国的大好河山,品尝当地美食。</p>
+                        <a href="旅游.html" class="btn btn-ocean">了解更多</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 家乡部分 -->
+            <section class="col-md-6 mb-5">
+                <h2 class="mb-4 pb-2 text-center" style="border-bottom: 1px solid #64B5F6;" id="2">我的家乡</h2>
+                
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="图片/6.jpg" class="img-responsive ocean-card-img" alt="家乡风光">
+                        <h3>广州番禺</h3>
+                        <p>番禺区位于广州市南部，珠江三角洲腹地，东临东莞，南接南沙，西连佛山顺德，北靠广州主城区，是广州"南拓"战略的核心区域。</p>
+                        <a href="广州番禺.html" class="btn btn-ocean">家乡风光</a>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="图片/7.jpg" class="img-responsive ocean-card-img" alt="家乡美食">
+                        <h3>家乡特色</h3>
+                        <p>番禺是广府菜的发源地之一，以新鲜的食材和独特的烹饪方式著称。这里的美食不仅包括传统的粤菜，还有许多地方特色小吃，深受当地人和游客的喜爱。</p>
+                        <a href="家乡特色.html" class="btn btn-ocean">更多特色</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- 关于我 -->
+        <section class="row my-5" id="3">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <h2>关于我</h2>
+                        <p class="lead">一个热爱生活、热爱家乡的普通人</p>
+                        <p>我是一名大学生，喜欢踢足球和旅行。希望通过这个博客分享我的兴趣爱好和美丽的家乡风光。</p>
+                        <a href="个人介绍.html" class="btn btn-outline-ocean">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 修改后的页脚 -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>个人博客</h5>
+                    <p>记录生活 · 分享美好</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>快速链接</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="首页.html">首页</a></li>
+                        <li><a href="足球.html">兴趣</a></li>
+                        <li><a href="广州番禺.html">家乡</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>联系方式</h5>
+                    <ul class="list-unstyled">
+                        <li>邮箱: 3237093347@qq.com</li>
+                        <li>城市: 广州市</li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: #444;">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 蓝色梦想家. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery和Bootstrap JS -->
+	<script src="bootstrap3.0/jquery-3.6.0.min.js"></script>
+    <script src="bootstrap3.0/js/bootstrap.min.js"></script>
+</body>
+</html>
